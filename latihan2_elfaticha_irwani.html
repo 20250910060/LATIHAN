@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profil Keluarga Interactive</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
+    body { background: #0f172a; color: #f8fafc; min-height: 100vh; padding: 30px 15px; }
+    .container { max-width: 950px; margin: 0 auto; }
+    
+    .header { text-align: center; margin-bottom: 25px; }
+    .header h1 { font-size: 28px; background: linear-gradient(135deg, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; }
+    
+    .hero { text-align: center; margin-bottom: 30px; }
+    .hero img { width: 100%; max-width: 450px; height: auto; max-height: 350px; object-fit: contain; border-radius: 16px; border: 2px solid rgba(255,255,255,0.1); box-shadow: 0 10px 30px rgba(0,0,0,0.5); cursor: pointer; transition: 0.3s; }
+    .hero img:hover { transform: scale(1.02); border-color: #38bdf8; }
+    
+    /* Filter Buttons */
+    .filter-nav { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; }
+    .nav-btn { background: rgba(30, 41, 59, 0.7); color: #94a3b8; border: 1px solid rgba(255,255,255,0.1); padding: 8px 20px; border-radius: 30px; font-weight: 600; cursor: pointer; transition: 0.3s; }
+    .nav-btn.active, .nav-btn:hover { background: #38bdf8; color: #0f172a; border-color: #38bdf8; box-shadow: 0 4px 15px rgba(56,189,248,0.4); }
+    
+    /* Cards Layout */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+    .card { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 20px; transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
+    .card:hover { transform: translateY(-5px); border-color: #38bdf8; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
+    
+    .badge { display: inline-block; padding: 4px 12px; background: rgba(56, 189, 248, 0.15); color: #38bdf8; border-radius: 20px; font-size: 11px; font-weight: 600; margin-bottom: 12px; width: fit-content; }
+    .card h3 { font-size: 18px; color: #f8fafc; margin-bottom: 6px; }
+    .card p { font-size: 13px; color: #94a3b8; margin-bottom: 15px; }
+    
+    .btn-detail { background: rgba(255,255,255,0.05); color: #38bdf8; border: 1px solid rgba(56,189,248,0.3); width: 100%; padding: 8px; border-radius: 8px; cursor: pointer; font-weight: 600; transition: 0.3s; }
+    .btn-detail:hover { background: #38bdf8; color: #0f172a; }
+    
+    /* Modal Pop-up */
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); justify-content: center; align-items: center; z-index: 100; padding: 15px; }
+    .modal-content { background: #1e293b; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; width: 100%; max-width: 400px; padding: 25px; position: relative; animation: popIn 0.3s ease; }
+    @keyframes popIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .close-btn { position: absolute; top: 15px; right: 20px; font-size: 22px; cursor: pointer; color: #94a3b8; }
+    .modal-body p { font-size: 14px; margin-bottom: 10px; color: #cbd5e1; }
+    .modal-body strong { color: #38bdf8; display: inline-block; width: 110px; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header">
+      <h1>PROFIL KELUARGA</h1>
+    </div>
+
+    <div class="hero">
+      <img src="Familyy.jpg" alt="Foto Keluarga" onclick="showDetail('Foto Keluarga', 'Keluarga Besar', 'Kuningan', '-', '-', '-')" onerror="this.src='https://images.unsplash.com/photo-1511895426328-dc8714191300?w=600'">
+    </div>
+
+    <!-- Filter Navigasi Kelompok -->
+    <div class="filter-nav">
+      <button class="nav-btn active" onclick="filterCategory('all', this)">Semua Anggota</button>
+      <button class="nav-btn" onclick="filterCategory('parents', this)">👨‍👩‍👦 Orang Tua</button>
+      <button class="nav-btn" onclick="filterCategory('kids', this)">👧 Anak-Anak</button>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="grid">
+      <!-- 1. Bapak -->
+      <div class="card parents">
+        <div>
+          <span class="badge">Kepala Keluarga</span>
+          <h3>1. Bapak</h3>
+          <p>Andi Jahriadi</p>
+        </div>
+        <button class="btn-detail" onclick="showDetail('1. Bapak', 'Andi Jahriadi', 'Kuningan, 26 September 1975', 'Laki-laki', 'Wiraswasta', 'Memancing')">Lihat Detail</button>
+      </div>
+
+      <!-- 2. Ibu -->
+      <div class="card parents">
+        <div>
+          <span class="badge">Ibu Rumah Tangga</span>
+          <h3>2. Ibu</h3>
+          <p>Sri Nurhayati</p>
+        </div>
+        <button class="btn-detail" onclick="showDetail('2. Ibu', 'Sri Nurhayati', 'Kuningan, 28 Juni 1986', 'Perempuan', 'Ibu Rumah Tangga', 'Memasak')">Lihat Detail</button>
+      </div>
+
+      <!-- 3. Anak 1 -->
+      <div class="card kids">
+        <div>
+          <span class="badge">Anak Pertama</span>
+          <h3>3. Anak Pertama</h3>
+          <p>Elfaticha Irwani</p>
+        </div>
+        <button class="btn-detail" onclick="showDetail('3. Anak Pertama', 'Elfaticha Irwani', 'Kuningan, 18 Juli 2007', 'Perempuan', 'Mahasiswa', 'Baking')">Lihat Detail</button>
+      </div>
+
+      <!-- 4. Anak 2 -->
+      <div class="card kids">
+        <div>
+          <span class="badge">Anak Kedua</span>
+          <h3>4. Anak Kedua</h3>
+          <p>Elfalyzha Waliyya</p>
+        </div>
+        <button class="btn-detail" onclick="showDetail('4. Anak Kedua', 'Elfalyzha Waliyya', 'Kuningan, 01 April 2010', 'Perempuan', 'Pelajar', 'Bernyanyi')">Lihat Detail</button>
+      </div>
+
+      <!-- 5. Anak 3 -->
+      <div class="card kids">
+        <div>
+          <span class="badge">Anak Ketiga</span>
+          <h3>5. Anak Ketiga</h3>
+          <p>Salma Hayatunnufus</p>
+        </div>
+        <button class="btn-detail" onclick="showDetail('5. Anak Ketiga', 'Salma Hayatunnufus', 'Kuningan, 10 Februari 2018', 'Perempuan', 'Pelajar', 'Menggambar')">Lihat Detail</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pop-up Modal Detail -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <h3 id="modal-title" style="margin-bottom:15px; color:#f8fafc; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:8px;">Detail</h3>
+      <div class="modal-body" id="modal-body"></div>
+    </div>
+  </div>
+
+  <script>
+    function filterCategory(cat, btn) {
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.card').forEach(card => {
+        card.style.display = (cat === 'all' || card.classList.contains(cat)) ? 'flex' : 'none';
+      });
+    }
+
+    function showDetail(role, nama, ttl, gender, kerja, hobi) {
+      document.getElementById('modal-title').innerText = role;
+      document.getElementById('modal-body').innerHTML = `
+        <p><strong>Nama:</strong> ${nama}</p>
+        <p><strong>Tempat, Tgl Lahir:</strong> ${ttl}</p>
+        <p><strong>Jenis Kelamin:</strong> ${gender}</p>
+        <p><strong>Pekerjaan:</strong> ${kerja}</p>
+        <p><strong>Hobi:</strong> ${hobi}</p>
+      `;
+      document.getElementById('modal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+  </script>
+</body>
+</html>

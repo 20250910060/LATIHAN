@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Biodata Elfaticha Irwani, mahasiswa Sistem Informasi Universitas Kuningan.">
+    <title>Biodata - Elfaticha Irwani</title>
+    <style>
+        :root {
+            --hijau-tua: #3e6b3a;
+            --hijau-muda: #e3efd9;
+            --cokelat-tua: #4e342e;
+            --cokelat-muda: #a1745a;
+            --krem: #fbf6ee;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--hijau-muda);
+            color: var(--cokelat-tua);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        header, footer {
+            background-color: var(--hijau-tua);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        header img {
+            border: 4px solid var(--cokelat-muda);
+            border-radius: 8px;
+        }
+
+        nav ul { list-style: none; padding: 0; }
+        nav li { display: inline; }
+        nav li + li::before { content: " | "; color: var(--cokelat-muda); }
+        nav a { color: #fff; text-decoration: none; font-weight: bold; }
+        nav a:hover { color: #f1d9b5; text-decoration: underline; }
+
+        hr { border: 0; border-top: 3px solid var(--cokelat-muda); margin: 0; }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 16px;
+        }
+
+        section {
+            background-color: var(--krem);
+            border-left: 6px solid var(--cokelat-muda);
+            border-radius: 6px;
+            padding: 12px 20px;
+            margin-bottom: 20px;
+        }
+
+        h2 { color: var(--cokelat-tua); }
+
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid var(--cokelat-muda); padding: 6px; text-align: left; }
+        th { background-color: var(--cokelat-muda); color: #fff; width: 35%; }
+        caption { font-weight: bold; margin-bottom: 6px; text-align: left; }
+
+        section a { color: var(--hijau-tua); font-weight: bold; }
+        section a:hover { color: var(--cokelat-muda); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="Elfaticha.jpeg" alt="Foto Elfaticha Irwani" width="150" height="200">
+        <h1>Elfaticha Irwani</h1>
+        <p>Mahasiswa Sistem Informasi</p>
+        <nav aria-label="Navigasi utama">
+            <ul>
+                <li><a href="#tentang">Tentang</a></li>
+                <li><a href="#pendidikan">Pendidikan</a></li>
+                <li><a href="#keahlian">Keahlian</a></li>
+                <li><a href="#kontak">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr>
+
+    <main>
+        <section id="tentang">
+            <h2>Tentang</h2>
+            <p>Mahasiswa Sistem Informasi yang sedang mempelajari pengembangan web.</p>
+            <table>
+                <caption>Data diri</caption>
+                <tr><th scope="row">Nama</th><td>Elfaticha Irwani</td></tr>
+                <tr><th scope="row">NIM</th><td>20250910060</td></tr>
+                <tr><th scope="row">Tempat, Tanggal Lahir</th><td>Kuningan, <time datetime="2007-07-18">18 Juli 2007</time></td></tr>
+                <tr><th scope="row">Alamat</th><td>Kuningan, Jawa Barat</td></tr>
+                <tr><th scope="row">Program Studi</th><td>Sistem Informasi</td></tr>
+            </table>
+        </section>
+
+        <section id="pendidikan">
+            <h2>Pendidikan</h2>
+            <ol>
+                <li>SD Negeri 3 Bojong (2013 - 2019)</li>
+                <li>SMP Negeri 1 Cilimus (2019 - 2022)</li>
+                <li>SMA Swadaya PUI Kuningan, Teknik Komputer dan Jaringan (2022 - 2025)</li>
+                <li>Universitas Kuningan, Sistem Informasi (2025 - sekarang)</li>
+            </ol>
+        </section>
+
+        <section id="keahlian">
+            <h2>Keahlian</h2>
+            <ul>
+                <li>Microsoft Office</li>
+                <li>Baking</li>
+            </ul>
+        </section>
+
+        <section id="kontak">
+            <h2>Kontak</h2>
+            <p>Nomor Telepon: <a href="tel:+6285759187748">085759187748</a></p>
+            <p>Email: <a href="mailto:irwanielfa18@gmail.com">irwanielfa18@gmail.com</a></p>
+            <p>GitHub: <a href="https://github.com/20250910060" target="_blank" rel="noopener noreferrer">github.com/20250910060</a></p>
+        </section>
+    </main>
+
+    <hr>
+    <footer>
+        <p>&copy; 2026 Elfaticha Irwani</p>
+    </footer>
+
+</body>
+</html>
